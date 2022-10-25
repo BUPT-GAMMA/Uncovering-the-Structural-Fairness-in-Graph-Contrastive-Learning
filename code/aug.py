@@ -58,8 +58,8 @@ def degree_aug(graph, x, embeds, degree,
     nsrc1 = th.cat((new_row_mix_1, new_row_rest_1)).cpu()
     ndst1 = th.cat((new_col_mix_1, new_col_rest_1)).cpu()
 
-    ng1 = dgl.graph((nsrc1, ndst1), num_nodes=graph.num_nodes()).to_simple().to(x.device)
     # ng1 = dgl.graph((nsrc1, ndst1), num_nodes=graph.num_nodes()).to(x.device)
+    ng1 = dgl.graph((nsrc1, ndst1), num_nodes=graph.num_nodes()).to_simple().to(x.device)
     ng1 = ng1.add_self_loop()
 
     new_row_mix_2, new_col_mix_2 = neighbor_sampling(src_idx, dst_idx, node_dist, sim, 
@@ -68,8 +68,8 @@ def degree_aug(graph, x, embeds, degree,
     nsrc2 = th.cat((new_row_mix_2, new_row_rest_2)).cpu()
     ndst2 = th.cat((new_col_mix_2, new_col_rest_2)).cpu()
 
-    ng2 = dgl.graph((nsrc2, ndst2), num_nodes=graph.num_nodes()).to_simple().to(x.device)
     # ng2 = dgl.graph((nsrc2, ndst2), num_nodes=graph.num_nodes()).to(x.device)
+    ng2 = dgl.graph((nsrc2, ndst2), num_nodes=graph.num_nodes()).to_simple().to(x.device)
     ng2 = ng2.add_self_loop()
     return ng1, ng2, feat1, feat2
 

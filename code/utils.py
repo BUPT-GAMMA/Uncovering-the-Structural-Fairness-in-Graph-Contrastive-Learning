@@ -105,7 +105,7 @@ def print_statistics(statistics, function_name):
 
 
 @repeat(1)
-def linear_clf(embeddings, y, train_mask, test_mask, degree, dataset, ratio=0.1):
+def linear_clf(embeddings, y, train_mask, test_mask, degree, dataset):
     X = embeddings.detach().cpu().numpy()
     Y = y.detach().cpu().numpy()
     Y = Y.reshape(-1, 1)
